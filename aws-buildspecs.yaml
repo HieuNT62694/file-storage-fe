@@ -28,5 +28,5 @@ phases:
       - export AWS_SESSION_TOKEN="$(echo ${CREDENTIALS} | jq -r '.Credentials.SessionToken')"
       - export AWS_EXPIRATION=$(echo ${CREDENTIALS} | jq -r '.Credentials.Expiration')
       - aws eks update-kubeconfig --name $eks_cluster_name
-      - kubectl set image deployment/file-storage-be file-storage-be=$acct_id.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$repo_name:$commit_id -n file-storage-be
-      - kubectl rollout restart deployment/file-storage-be -n file-storage-be
+      - kubectl set image deployment/file-storage-fe file-storage-fe=$acct_id.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$repo_name:$commit_id -n file-storage-fe
+      - kubectl rollout restart deployment/file-storage-fe -n file-storage-fe
